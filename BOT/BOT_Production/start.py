@@ -87,7 +87,7 @@ def main_strateg():
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Текущая позиция: {open_positions}  \nСимвол {symbol} \nОбъем{position_volume} \nПрибыль: {position_profit}'
+                    text=f'Текущая позиция: {open_positions}  \nСимвол: {symbol} \nОбъем: {position_volume} \nПрибыль: {position_profit}'
                 ))
                 # Процент прибыли BUY
                 # position_procent_profit = (position_size_difference * 100) / position_size_mark
@@ -111,10 +111,11 @@ def main_strateg():
             elif float(position_volume) < 0:
                 # Обновить статус позиции
                 open_positions = "fall"
+                position_volume = abs(float(position_volume))  # берем по модулю
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Текущая позиция: {open_positions}  \nСимвол {symbol} \nОбъем{position_volume} \nПрибыль: {position_profit}'
+                    text=f'Текущая позиция: {open_positions}  \nСимвол: {symbol} \nОбъем: {position_volume} \nПрибыль: {position_profit}'
                 ))
 
                 # Процент прибыли SELL
@@ -174,7 +175,7 @@ def main_strateg():
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Balance: {balance} USDT \nЗаходим в покупку по цене {price} \nОбъем: {qty} \nSL: {price - stop_loss} \nTP: {price + take_profit}'
+                    text=f'Заходим в покупку по цене {price} \nОбъем: {qty} \nSL: {price - stop_loss} \nTP: {price + take_profit}'
                 ))
 
                 # расчет размера позиции на покупку/продажу
@@ -226,7 +227,7 @@ def main_strateg():
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Balance: {balance} USDT \nЗаходим в продажу по цене {price} \nОбъем: {qty} \nSL: {price + stop_loss} \nTP: {price - take_profit}'
+                    text=f'Заходим в продажу по цене {price} \nОбъем: {qty} \nSL: {price + stop_loss} \nTP: {price - take_profit}'
                 ))
 
                 # Order Sell
@@ -285,7 +286,7 @@ def main_strateg():
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Balance: {balance} USDT \nЗаходим в покупку по цене {price} \nОбъем{position_volume} \nSL: {price - stop_loss} \nTP: {price + take_profit}'
+                    text=f'Заходим в покупку по цене {price} \nОбъем{position_volume} \nSL: {price - stop_loss} \nTP: {price + take_profit}'
                 ))
 
                 # расчет размера позиции на покупку/продажу
@@ -344,7 +345,7 @@ def main_strateg():
                 # Отправлять сообщения в группу
                 requests.get('https://api.telegram.org/bot{}/sendMessage'.format(api_token), params=dict(
                     chat_id=chat_id,
-                    text=f'Balance: {balance} USDT \nЗаходим в продажу по цене {price} \nОбъем{position_volume} \nSL: {price + stop_loss} \nTP: {price - take_profit}'
+                    text=f'Заходим в продажу по цене {price} \nОбъем{position_volume} \nSL: {price + stop_loss} \nTP: {price - take_profit}'
                 ))
 
                 # расчет размера позиции на покупку/продажу
