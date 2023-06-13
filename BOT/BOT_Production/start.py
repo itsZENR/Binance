@@ -19,9 +19,9 @@ balance = get_av_balance(client, time)
 # Торгуем % от баланса
 balanceProcent = 100
 # % Take-profit
-procent_profit = 1
+procent_profit = 5.7
 # % Stop-loss
-stop_loss_procent = 0.5
+stop_loss_procent = 4.5
 
 
 balanceProcent = balanceProcent / 100
